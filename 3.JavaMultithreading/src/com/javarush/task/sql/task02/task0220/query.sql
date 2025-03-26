@@ -5,6 +5,4 @@ SELECT DISTINCT name,
                     WHEN prod_year = 2022 THEN 'even newer'
                     END AS category
 FROM cars
-WHERE prod_year IN (2020, 2021, 2022)
-ORDER BY name;
 
