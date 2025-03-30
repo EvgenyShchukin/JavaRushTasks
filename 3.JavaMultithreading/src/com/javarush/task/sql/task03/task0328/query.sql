@@ -1,4 +1,4 @@
 -- Write your code here:
-select phone as cust_phone, order_date, total_cost, store_id
+select customers.phone as cust_phone, orders.order_date, orders.total_cost, orders.store_id
 from customers RIGHT JOIN orders on customers.customer_id = orders.customer_id
-where city = 'New York' AND order_status = 'PROCESSING'
+where customers.city = 'New York' AND orders.order_status = 'PROCESSING'

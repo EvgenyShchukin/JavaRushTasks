@@ -1,3 +1,3 @@
 -- Write your code here:
-select ret_name, ret_location, sup_name, sup_country
-from top_retailers as r JOIN suppliers as s ON ret_location = sup_country
+select r.ret_name, r.ret_location, s.sup_name, s.sup_country
+from top_retailers as r JOIN suppliers as s ON r.ret_location = s.sup_country

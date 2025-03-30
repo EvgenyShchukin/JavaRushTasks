@@ -1,0 +1,2 @@
+-- Write your code here:
+select CURDATE(), CURRENT_TIMESTAMP() + INTERVAL  3 DAY,  CURRENT_TIMESTAMP() - INTERVAL  3 DAY

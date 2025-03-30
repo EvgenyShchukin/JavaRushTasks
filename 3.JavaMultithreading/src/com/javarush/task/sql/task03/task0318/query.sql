@@ -1,3 +1,3 @@
 -- Write your code here:
-select ret_name, ret_revenue, sup_name, sup_revenue
-from top_retailers JOIN suppliers ON ret_revenue = sup_revenue
+select top_retailers.ret_name, top_retailers.ret_revenue, suppliers.sup_name, suppliers.sup_revenue
+from top_retailers JOIN suppliers ON top_retailers.ret_revenue = suppliers.sup_revenue
