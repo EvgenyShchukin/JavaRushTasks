@@ -1,2 +1,2 @@
 -- Write your code here:
-TRUNCATE task
+TRUNCATE TABLE task
