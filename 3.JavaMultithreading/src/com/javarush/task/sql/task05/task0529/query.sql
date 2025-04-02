@@ -3,5 +3,6 @@ SELECT
     a.full_name,
     COUNT(DISTINCT b.publisher_id) AS publishers
 FROM
-    author a LEFT JOIN book b ON a.author_id = b.id
-GROUP BYa.author_id, a.first_name, a.last_name;
+    author a LEFT JOIN book b ON a.id = b.author_id
+LEFT JOIN publisher p  ON b.publisher_id = p.id
+GROUP BY a.id

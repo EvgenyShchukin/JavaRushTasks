@@ -1,4 +1,4 @@
 -- Write your code here:
-select released
+select number
 from lego_set
 ORDER BY released DESC
