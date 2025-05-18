@@ -14,16 +14,27 @@ public class Solution {
     }
 
     public static int min(int[] ints) {
-        //напишите тут ваш код
-        return 0;
+        int min = Integer.MIN_VALUE;
+        int minA = Integer.MAX_VALUE;
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = i + 1; j < 10; j++)
+                min = Math.min(ints[i], ints[j]);
+            minA = Math.min(min, minA);
+        }
+        return minA;
     }
 
     public static int[] getArrayOfTenElements() {
         Scanner console = new Scanner(System.in);
-        int [] intArray = new int[10];
-        for (int i = 0; i < 9; i++) {
-            intArray[i] = console.nextInt();
+        int i = 0;
+        int[] array = new int[10];
+        while (console.hasNext()) {
+            array[i] = console.nextInt();
+            if (i == 9)
+                break;
+            i++;
         }
-        return intArray;
+        return array;
     }
 }

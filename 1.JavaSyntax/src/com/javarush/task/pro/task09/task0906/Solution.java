@@ -1,8 +1,6 @@
 package com.javarush.task.pro.task09.task0906;
 
-import java.util.regex.Pattern;
-
-/* 
+/*
 Двоичный конвертер
 */
 
@@ -15,10 +13,11 @@ public class Solution {
     }
 
     public static String toBinary(int decimalNumber) {
-        if (decimalNumber <= 0) {
-            return "";
-        }
         String binaryNumber = "";
+        if (decimalNumber <= 0) {
+            return binaryNumber;
+        }
+
         while (decimalNumber != 0) {
             binaryNumber = decimalNumber % 2 + binaryNumber;
             decimalNumber = decimalNumber / 2;
@@ -27,14 +26,15 @@ public class Solution {
     }
 
     public static int toDecimal(String binaryNumber) {
-        if (binaryNumber == null || binaryNumber.isEmpty()) {
-            return 0;
-        }
         int decimalNumber = 0;
+        if (binaryNumber == null) {
+            return decimalNumber;
+        }
+
         for (int i = 0; i < binaryNumber.length(); i++) {
-            char aChar = binaryNumber.charAt(binaryNumber.length() - 1 - i);
-            int number = Integer.parseInt(String.valueOf(aChar));
-            decimalNumber = decimalNumber + number * (int) Math.pow(2, i);
+            int index = binaryNumber.length() - 1 - i;
+            int value = Character.getNumericValue(binaryNumber.charAt(index));
+            decimalNumber += value * Math.pow(2, i);
         }
         return decimalNumber;
     }

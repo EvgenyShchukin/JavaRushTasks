@@ -10,10 +10,13 @@ public class Solution {
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
-            if (i % 2 == 0) {
-                array[i] = array [i] * (-1);
-            } else {
-                array[i] = array [i];
+
+            if (array[i] < 0) {
+                if (array[i] % 2 * -1 == 0) {
+                    array[i] = array[i] * -1;
+                }
+            } else if (array[i] % 2 == 0) {
+                array[i] = array[i] * -1;
             }
         }
         System.out.println(array[0]);
@@ -23,3 +26,4 @@ public class Solution {
         System.out.println(array[4]);
     }
 }
+

@@ -11,12 +11,12 @@ public class Solution {
     public static String firstFileName;
     public static String secondFileName;
 
-
     static {
-        Scanner console = new Scanner(System.in);
-        firstFileName = console.nextLine();
-        secondFileName = console.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        firstFileName = scanner.nextLine();
+        secondFileName = scanner.nextLine();
     }
+
 
     public static void main(String[] args) throws InterruptedException {
         systemOutPrintln(firstFileName);
@@ -29,7 +29,6 @@ public class Solution {
         f.start();
         f.join();
         System.out.println(f.getFileContent());
-
     }
 
     public interface ReadFileInterface {
@@ -44,12 +43,12 @@ public class Solution {
     }
 
     public static class ReadFileThread extends Thread implements ReadFileInterface {
-        private String fileName;
         private StringBuilder content = new StringBuilder();
+        private String fullFileName;
 
         @Override
         public void setFileName(String fullFileName) {
-            this.fileName = fileName;
+            this.fullFileName = fullFileName;
         }
 
         @Override
@@ -59,13 +58,18 @@ public class Solution {
 
         @Override
         public void run() {
-            try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-                while (reader.ready()) {
-                   content.append(reader.readLine()).append(" ");
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(fullFileName));
+
+                while (bufferedReader.ready()) {
+                    content.append(bufferedReader.readLine()) .append(" ");
                 }
+
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
         }
     }
 }
