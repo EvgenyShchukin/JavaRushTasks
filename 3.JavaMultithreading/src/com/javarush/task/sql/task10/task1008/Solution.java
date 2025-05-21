@@ -19,12 +19,13 @@ public class Solution {
 
     public static List<Employee> getSorted(int offset, int limit) {
         try (Session session = MySessionFactory.getSessionFactory().openSession()) {
-            String hql = "from employee order by age";
-            Query<Employee> query = session.createQuery(hql , Employee.class);
+            String hql = "from Employee order by age";
+            Query<Employee> query = session.createQuery(hql, Employee.class);
             query.setFirstResult(offset);
             query.setMaxResults(limit);
             List<Employee> employees = query.list();
 
             return employees;
+        }
     }
 }

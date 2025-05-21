@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name = "author")
     private Integer id;
     @Column(name="first_name")
     private String firstName;

@@ -19,7 +19,7 @@ public class Solution {
     public static Employee getDirector() {
         Employee result;
         try (Session session = MySessionFactory.getSessionFactory().openSession()) {
-            String hql = "select * from employee where smth = 'director'";
+            String hql = "from Employee where smth = 'director'";
             Query<Employee> query = session.createQuery(hql, Employee.class);
             result = query.uniqueResult();
         }

@@ -14,7 +14,7 @@ public class Solution {
 
     public static void main(String[] args) throws Exception {
         try (Session session = MySessionFactory.getSessionFactory().openSession()) {
-            String hql = "select distinct smth from employee where age > 18";
+            String hql = "select distinct smth from Employee where age > 18";
             Query<Employee> query = session.createQuery(hql , Employee.class);
             List<Employee> employees = query.list();
             for (Employee value : employees) {

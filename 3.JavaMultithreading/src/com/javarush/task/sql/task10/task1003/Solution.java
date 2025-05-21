@@ -19,9 +19,11 @@ public class Solution {
     public static void promoteAll() {
         Employee result;
         try (Session session = MySessionFactory.getSessionFactory().openSession()) {
-            String hql = "update employee set smth = 'senior ' + smth";
+            String hql = "update Employee set smth = cconcat( 'senior ', smth)";
+            Transaction transaction = session.beginTransaction();
             Query<Employee> query = session.createQuery(hql, Employee.class);
             query.executeUpdate();
+            transaction.commit();
         }
     }
 }

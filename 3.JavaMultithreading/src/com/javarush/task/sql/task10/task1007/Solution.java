@@ -19,11 +19,12 @@ public class Solution {
 
     public static List<Employee> getIn(List<String> in) {
         try (Session session = MySessionFactory.getSessionFactory().openSession()) {
-            String hql = "from employee where smth IN (:occupation_list) order by age";
-            Query<Employee> query = session.createQuery(hql ,Employee.class);
-            query.setParameter("occupation_list", getIn(in);
+            String hql = "from Employee where smth IN (:occupation_list) order by age";
+            Query<Employee> query = session.createQuery(hql, Employee.class);
+            query.setParameter("occupation_list", in);
             List<Employee> employees = query.list();
 
             return employees;
+        }
     }
 }

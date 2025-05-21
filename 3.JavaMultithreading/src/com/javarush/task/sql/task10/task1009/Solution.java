@@ -20,18 +20,18 @@ public class Solution {
 
     public static Long getSalaryFund() {
         try (Session session = MySessionFactory.getSessionFactory().openSession()) {
-            String hql = "select sum(salary) as allSalary from employee";
+            String hql = "select sum(salary) from Employee";
             Query<Long> query = session.createQuery(hql, Long.class);
-            Long allSalary = query.uniqueResult();
+            Long allSalary = query.getSingleResult();
             return allSalary;
         }
     }
 
     public static Double getAverageAge() {
         try (Session session = MySessionFactory.getSessionFactory().openSession()) {
-            String hql = "select avg(salary) as avgSalary from employee";
+            String hql = "select avg(salary) from Employee";
             Query<Double> query = session.createQuery(hql, Double.class);
-            Double avgSalary = query.uniqueResult();
+            Double avgSalary = query.getSingleResult();
             return avgSalary;
         }
     }

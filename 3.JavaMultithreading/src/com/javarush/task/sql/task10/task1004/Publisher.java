@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name = "publisher")
     private Integer id;
     @Column(name="name")
     private String name;
