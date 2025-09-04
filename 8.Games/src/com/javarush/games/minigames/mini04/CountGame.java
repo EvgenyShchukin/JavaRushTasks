@@ -8,6 +8,8 @@ import com.javarush.engine.cell.Game;
 */
 
 public class CountGame extends Game {
+    int sum = 0;
+    int count = 0;
 
     @Override
     public void initialize() {
@@ -23,7 +25,18 @@ public class CountGame extends Game {
     }
 
     public void showResult() {
-        //напишите тут ваш код
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (getCellColor(i, j) == Color.GREEN) {
+                    count++;
+                }
+                sum = sum + getCellNumber(i, j);
+            }
+        }
+
+        printSum(sum);
+        printCountOfGreenCells(count);
     }
 
     private void printSum(int sum) {

@@ -2,6 +2,7 @@ package com.javarush.task.task19.task1903;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /* 
 Адаптация нескольких интерфейсов
@@ -9,13 +10,7 @@ import java.util.Map;
 
 public class Solution {
     public static Map<String, String> countries = new HashMap<String, String>();
-    private Customer customer;
-    private Contact contact;
 
-    public Solution(Customer customer, Contact contact) {
-        this.customer = customer;
-        this.contact = contact;
-    }
     static {
         countries.put("UA", "Ukraine");
         countries.put("RU", "Russia");
@@ -35,12 +30,18 @@ public class Solution {
 
         @Override
         public String getName() {
-            return getName();
+            return data.getContactLastName() + ", " + data.getContactFirstName();
         }
 
         @Override
         public String getPhoneNumber() {
-            return "+38(050)" + data.getPhoneNumber();
+            String phone = String.valueOf(data.getPhoneNumber());
+            while (phone.length() < 10) {
+                phone = "0" + phone;
+            }
+
+            return "+" + data.getCountryPhoneCode() + "(" + phone.substring(0,3) + ")" +
+                    phone.substring(3,6) + "-" + phone.substring(6,8) + "-" + phone.substring(8);
         }
 
         @Override
@@ -55,7 +56,7 @@ public class Solution {
     }
 
 
-    public interface IncomeData{
+    public interface IncomeData {
         String getCountryCode();        //For example: UA
 
         String getCompany();            //For example: JavaRush Ltd.
